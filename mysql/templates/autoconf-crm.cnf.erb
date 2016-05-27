@@ -1,0 +1,30 @@
+[mysqld]
+# listen on localhost for better security
+bind-address    = <%= @listenon %>
+port            = 3306
+# save stats about slow queries
+log_slow_queries = /var/lib/mysql/mysql-slow.log
+# optimization
+# key_buffer_size = 1/4 of Memory for mysql server
+key_buffer_size = 128M
+# number of opened files for all threads
+table_cache = 256
+# buffers for each thread
+sort_buffer = 4M
+#record_buffer = 1M
+
+# packet size default value 16Mb
+max_allowed_packet=20M
+
+# set maximum opened files
+open_files_limit = <%= @open_files_limit %>
+
+collation_server=utf8_general_ci
+character_set_server=utf8
+default-character-set=utf8
+init_connect='SET collation_connection = utf8_general_ci'
+init_connect='SET NAMES utf8'
+
+[mysql]
+default-character-set = utf8
+

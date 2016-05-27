@@ -1,0 +1,10 @@
+#!/bin/bash
+# ensure backup directory exist
+# or create if it does not exist
+/bin/mkdir -p <%= @backupdir %>
+
+# dump base
+<%= @sql_dump %> -u<%= @user %> -p<%= @password %> <%= @name %> > <%= @backupdir %>/<%= @name %>`/bin/date +%F-%H-%M`.sql
+
+# clear files older than 30 days
+find <%= @backupdir %> -mtime +30 -exec rm {} \;

@@ -1,0 +1,29 @@
+Usage example:
+Class will make directory for vhost. Set user:group to apache_usr 
+( apache in CentOS ). Set mode 2775.
+
+httpd::vhost { "my.domain":
+	docroot => "/var/www/html/my.domain",
+	port => "80",
+	serveraliases => "www.my.domain",
+}
+
+By default 
+	serveraliases == *.{ name of domain }
+	port == 80
+
+  $docroot
+	directory for site /var/www/html/site1
+
+  $port='80',
+	port to listen
+
+  $serveraliases='',
+	Alias
+
+  $template='httpd/vhost.conf.erb',
+	template for vhost file generation
+
+  $filename='',
+	if you do not want to use template then you can provide file
+with another settings 

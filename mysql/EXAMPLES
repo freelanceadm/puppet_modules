@@ -1,0 +1,22 @@
+1 Install mysql-server
+        class { "mysql":
+                password => 'SECRET PASS',
+        }
+	password will be new password for root mysql user.
+	Mysql_secure_installation ll run and remove
+	test users, set root pass, remove remote logins.
+
+2 Create database 
+       mysql::createdb {"mypuppetdb":
+               password => 'SECRET PASS',
+       }
+	create database "mypuppetdb". 'password' is root mysql password.
+
+3 Create user 
+       mysql::createusr { "puppettsusr":
+               admpass => 'SECRET PASS',
+               password => 'puppetpswdr',
+               db => 'mypuppetdb',
+       }
+	Will only create useri with name "puppettsusr" if $db (database) exist.
+	$admpass is root password for mysql.

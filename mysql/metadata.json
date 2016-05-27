@@ -1,0 +1,14 @@
+{
+  "name": "onotole-mysql",
+  "version": "0.1.0",
+  "author": "onotole",
+  "summary": "Mysql for LAMP (Linux Apache Mysql PHP )",
+  "license": "GPLv2",
+  "source": "",
+  "project_page": null,
+  "issues_url": null,
+  "dependencies": [
+    {"version_requirement":">= 1.0.0","name":"puppetlabs-stdlib"}
+  ]
+}
+

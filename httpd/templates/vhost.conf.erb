@@ -1,0 +1,17 @@
+<VirtualHost *:<%= @port %>>
+    DocumentRoot "<%= @docroot %>"
+    ServerName <%= @name %>
+    ServerAlias *.<%= @name %> 
+    <% if @serveraliases != '' -%>
+      <%= "ServerAlias #{@serveraliases}\n" %>
+    <% end -%>
+    ErrorLog "/var/log/httpd/<%= @name %>.error_log"
+    CustomLog "/var/log/httpd/<%= @name %>.access_log" combined
+  <Directory "<%= @docroot %>">
+    Options Indexes FollowSymLinks
+# It can be "All", "None", or any combination of the keywords:
+    AllowOverride All
+    Order allow,deny
+    Allow from all
+  </Directory>
+</VirtualHost>
